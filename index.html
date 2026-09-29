@@ -4,56 +4,53 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#02060a">
-  <meta name="description" content="CHIROMBE Matrix 3.0 — clean command surface over the House protection model.">
-  <title>CHIROMBE · Matrix Command Core</title>
+  <meta name="description" content="CHIROMBE Matrix 3.0 clean command surface.">
+  <title>CHIROMBE Matrix Command Core</title>
   <link rel="stylesheet" href="./css/matrix-shell.css">
 </head>
 <body>
   <div id="boot" class="boot">
     <div class="boot-mark">Z</div>
     <div class="boot-title">CHIROMBE MATRIX</div>
-    <div id="boot-status">INITIALISING CORE…</div>
+    <div id="boot-status">INITIALISING CORE...</div>
     <div class="boot-bar"><i id="boot-progress"></i></div>
   </div>
-
   <div id="app" class="app hidden">
     <header class="topbar">
       <div class="brand">
         <div class="brand-mark">Z</div>
         <div>
-          <div class="eyebrow">HOUSE OF MASAWI · CHIROMBE</div>
+          <div class="eyebrow">HOUSE OF MASAWI CHIROMBE</div>
           <h1>ZIONCORE MATRIX <span>3.0</span></h1>
         </div>
       </div>
       <div class="top-status">
         <span class="pill"><b class="dot"></b><span id="coreState">CORE STARTING</span></span>
         <span class="pill"><b class="dot"></b><span id="engineState">ENGINE CHECKING</span></span>
-        <span class="pill audio-pill">♪ <span id="audioState">AUDIO LOCKED</span></span>
+        <span class="pill audio-pill">AUDIO <span id="audioState">LOCKED</span></span>
       </div>
     </header>
-
     <div class="layout">
       <aside class="nav">
-        <button class="nav-btn active" data-panel="command">◈ COMMAND</button>
-        <button class="nav-btn" data-panel="matrix">◉ MATRIX</button>
-        <button class="nav-btn" data-panel="bloodline">◎ BLOODLINE</button>
-        <button class="nav-btn" data-panel="engines">◇ ENGINES</button>
-        <button class="nav-btn" data-panel="audio">♪ AUDIO</button>
-        <button class="nav-btn" data-panel="audit">▣ AUDIT</button>
-        <button class="nav-btn" data-panel="health">⚙ HEALTH</button>
+        <button class="nav-btn active" data-panel="command">COMMAND</button>
+        <button class="nav-btn" data-panel="matrix">MATRIX</button>
+        <button class="nav-btn" data-panel="bloodline">BLOODLINE</button>
+        <button class="nav-btn" data-panel="engines">ENGINES</button>
+        <button class="nav-btn" data-panel="audio">AUDIO</button>
+        <button class="nav-btn" data-panel="audit">AUDIT</button>
+        <button class="nav-btn" data-panel="health">HEALTH</button>
         <div class="nav-spacer"></div>
-        <a class="nav-link" href="https://tariromasawi.github.io/chirombe/app.html">ARCHIVE CORE ↗</a>
-        <a class="nav-link" href="https://tariromasawi.github.io/chirombe/engine.html">ARCHIVE ENGINE ↗</a>
-        <a class="nav-link" href="https://github.com/tariromasawi/chirombe">SOURCE ARCHIVE ↗</a>
+        <a class="nav-link" href="https://tariromasawi.github.io/chirombe/app.html">ARCHIVE CORE</a>
+        <a class="nav-link" href="https://tariromasawi.github.io/chirombe/engine.html">ARCHIVE ENGINE</a>
+        <a class="nav-link" href="https://github.com/tariromasawi/chirombe">SOURCE ARCHIVE</a>
       </aside>
-
       <main class="main">
         <section class="panel active" id="panel-command">
           <div class="hero">
             <div>
-              <div class="eyebrow">CONTINUITY COMMAND CENTRE · 77-99-33</div>
+              <div class="eyebrow">CONTINUITY COMMAND CENTRE 77-99-33</div>
               <h2>Living Protection Matrix</h2>
-              <p>Standalone command surface. Spiritual and devotional concepts are symbolic model entities. Measurements stay separate from interpretation. The historical 729 KB kernel is archived and is not executed here.</p>
+              <p>Standalone command surface. Devotional concepts are symbolic model entities. The historical 729 KB kernel is archived and is not executed here.</p>
             </div>
             <div class="hero-actions">
               <button class="primary" id="fullCycle">RUN FULL CYCLE</button>
@@ -61,14 +58,12 @@
               <button id="selfTest">SELF TEST</button>
             </div>
           </div>
-
           <div class="metrics">
             <article><span>NODES</span><strong id="mNodes">0</strong><small>model entities</small></article>
             <article><span>RESILIENCE</span><strong id="mRes">0%</strong><small>model state</small></article>
             <article><span>COHERENCE</span><strong id="mCoh">0%</strong><small>network state</small></article>
             <article><span>AUDIT</span><strong id="mAudit">READY</strong><small>chain state</small></article>
           </div>
-
           <div class="grid two">
             <article class="card matrix-card">
               <div class="card-head"><span>LIVE MATRIX</span><b id="matrixMode">NETWORK</b></div>
@@ -85,7 +80,6 @@
             </article>
           </div>
         </section>
-
         <section class="panel" id="panel-matrix">
           <div class="section-title"><div><div class="eyebrow">NETWORK INTELLIGENCE</div><h2>Matrix Field</h2></div></div>
           <div class="card matrix-large"><canvas id="networkCanvas"></canvas></div>
@@ -95,12 +89,11 @@
             <button data-mode="defence">DEFENCE</button><button data-mode="prediction">PREDICTION</button>
           </div>
           <div class="grid three">
-            <article class="card"><span class="eyebrow">NIM</span><h3>Node Intelligence</h3><pre id="nimOut">Waiting…</pre></article>
-            <article class="card"><span class="eyebrow">PPM</span><h3>Pathway Mapper</h3><pre id="ppmOut">Waiting…</pre></article>
-            <article class="card"><span class="eyebrow">EEA</span><h3>Resource Graph</h3><pre id="eeaOut">Waiting…</pre></article>
+            <article class="card"><span class="eyebrow">NIM</span><h3>Node Intelligence</h3><pre id="nimOut">Waiting</pre></article>
+            <article class="card"><span class="eyebrow">PPM</span><h3>Pathway Mapper</h3><pre id="ppmOut">Waiting</pre></article>
+            <article class="card"><span class="eyebrow">EEA</span><h3>Resource Graph</h3><pre id="eeaOut">Waiting</pre></article>
           </div>
         </section>
-
         <section class="panel" id="panel-bloodline">
           <div class="section-title"><div><div class="eyebrow">AUTHORISED REMEMBRANCE</div><h2>Protection Circle</h2></div><button id="addNode">+ ADD NODE</button></div>
           <div class="card"><div id="familyGrid" class="family-grid"></div></div>
@@ -108,17 +101,13 @@
             <article class="card"><div class="card-head"><span>LINEAGE GRAPH</span><b>SYMBOLIC</b></div><canvas id="lineageCanvas"></canvas></article>
             <article class="card">
               <div class="card-head"><span>PROTECTION STATE</span><b id="protectState">READY</b></div>
-              <div class="shield">
-                <div class="shield-core">◈</div>
-                <div>TRUTH · LOVE · UNITY · WISDOM · PEACE</div>
-              </div>
+              <div class="shield"><div class="shield-core">Z</div><div>TRUTH LOVE UNITY WISDOM PEACE</div></div>
               <div class="bar"><b id="protectFill"></b></div>
               <div id="gateList" class="gate"></div>
-              <p class="honest">Digital protection = integrity, audit, watchdog, recovery and remembrance data. It does not claim supernatural causation.</p>
+              <p class="honest">Digital protection means integrity, audit, watchdog, recovery and remembrance data. It does not claim supernatural causation.</p>
             </article>
           </div>
         </section>
-
         <section class="panel" id="panel-engines">
           <div class="section-title"><div><div class="eyebrow">COMPUTATIONAL PIPELINE</div><h2>Engine Deck</h2></div></div>
           <div class="engine-grid">
@@ -133,13 +122,12 @@
             <button class="engine-card" data-engine="simulation"><b>SIMULATION</b><span>Synthetic agents</span></button>
             <button class="engine-card" data-engine="pioneer"><b>PIONEER</b><span>Hypothesis engine</span></button>
             <button class="engine-card" data-engine="prophetic"><b>PROPHETIC</b><span>Human interpretation</span></button>
-            <button class="engine-card" data-engine="deep"><b>DEEP KERNEL</b><span>Archived — not executed</span></button>
+            <button class="engine-card" data-engine="deep"><b>DEEP KERNEL</b><span>Archived not executed</span></button>
           </div>
           <pre id="engineOutput" class="console">ENGINE OUTPUT READY</pre>
         </section>
-
         <section class="panel" id="panel-audio">
-          <div class="section-title"><div><div class="eyebrow">LIVING LITURGY · AUDIO</div><h2>Resonance Chamber</h2></div><button class="primary" id="unlockAudio">UNLOCK AUDIO</button></div>
+          <div class="section-title"><div><div class="eyebrow">LIVING LITURGY AUDIO</div><h2>Resonance Chamber</h2></div><button class="primary" id="unlockAudio">UNLOCK AUDIO</button></div>
           <div class="grid two">
             <article class="card">
               <div class="audio-orb"><canvas id="audioCanvas"></canvas><div class="orb-label">MWARI<br>NDI MWARI</div></div>
@@ -150,40 +138,47 @@
             <article class="card">
               <div class="card-head"><span>AUDIO TELEMETRY</span><b id="audioMode">STANDBY</b></div>
               <div class="telemetry">
-                <div><span>VOICE</span><b id="voiceName">—</b></div>
+                <div><span>VOICE</span><b id="voiceName">-</b></div>
                 <div><span>RATE</span><b>0.88</b></div>
                 <div><span>OSCILLATOR</span><b>136.1 Hz</b></div>
                 <div><span>MODE</span><b>SYMBOLIC / ACOUSTIC</b></div>
               </div>
-              <p class="note">Audio is generated locally by browser speech and Web Audio APIs after a user gesture. It is a devotional and acoustic layer, not evidence of supernatural transmission.</p>
+              <p class="note">Audio is generated locally after a user gesture. It is a devotional and acoustic layer, not evidence of supernatural transmission.</p>
             </article>
           </div>
         </section>
-
         <section class="panel" id="panel-audit">
           <div class="section-title"><div><div class="eyebrow">INTEGRITY</div><h2>Audit Chain</h2></div><button id="verifyAudit">VERIFY</button></div>
           <div class="grid two">
-            <article class="card"><pre id="auditOut">Loading audit state…</pre></article>
+            <article class="card"><pre id="auditOut">Loading audit state</pre></article>
             <article class="card"><div class="card-head"><span>JOURNAL</span><b>APPEND-ONLY</b></div><div id="journal" class="feed"></div></article>
           </div>
         </section>
-
         <section class="panel" id="panel-health">
           <div class="section-title"><div><div class="eyebrow">WATCHDOG</div><h2>System Health</h2></div><button id="refreshHealth">REFRESH</button></div>
           <div class="grid three">
-            <article class="card"><span class="eyebrow">CORE</span><pre id="healthCore">—</pre></article>
-            <article class="card"><span class="eyebrow">ENGINE</span><pre id="healthEngine">—</pre></article>
-            <article class="card"><span class="eyebrow">CAPABILITIES</span><pre id="healthCaps">—</pre></article>
+            <article class="card"><span class="eyebrow">CORE</span><pre id="healthCore">-</pre></article>
+            <article class="card"><span class="eyebrow">ENGINE</span><pre id="healthEngine">-</pre></article>
+            <article class="card"><span class="eyebrow">CAPABILITIES</span><pre id="healthCaps">-</pre></article>
           </div>
           <article class="card"><span class="eyebrow">BOOT DIAGNOSTICS</span><div id="diagnostics" class="diagnostics"></div></article>
         </section>
       </main>
     </div>
-
-    <footer>MWARI NDI MWARI · CHIROMBE MATRIX 3.0 · SYMBOLIC PROTECTION / COMPUTATIONAL RESILIENCE · 77-99-33 · <span id="version">3.0.0</span></footer>
+    <footer>MWARI NDI MWARI CHIROMBE MATRIX 3.0 77-99-33 <span id="version">3.0.0</span></footer>
   </div>
-
   <script src="./js/matrix-kernel.js"></script>
-  <script src="./js/matrix-shell.js" defer></script>
+  <script src="./js/phase2-bridge.js"></script>
+  <script src="./js/matrix-shell.js"></script>
+  <script>
+    setTimeout(function () {
+      var boot = document.getElementById("boot");
+      var app = document.getElementById("app");
+      if (app && app.classList.contains("hidden")) {
+        app.classList.remove("hidden");
+        if (boot) boot.classList.add("hidden");
+      }
+    }, 2500);
+  </script>
 </body>
 </html>
