@@ -1,4 +1,4 @@
-/* CHIROMBE MATRIX 3.0 Phase 9. Living liturgy from events. */
+/* CHIROMBE MATRIX 3.0 Phase 9/10. Living liturgy from events. */
 (function (g) {
   "use strict";
 
@@ -58,7 +58,13 @@
     opts = opts || {};
     var prayer = compose();
     fill(prayer);
-    if (g.CHIROMBE_PRAYER && g.CHIROMBE_PRAYER.seal) g.CHIROMBE_PRAYER.seal();
+    if (g.CHIROMBE_VOICE && g.CHIROMBE_VOICE.refreshLiving) {
+      g.CHIROMBE_VOICE.refreshLiving();
+    } else if (g.CHIROMBE_PRAYER && g.CHIROMBE_PRAYER.ingest) {
+      g.CHIROMBE_PRAYER.ingest({ id: "PRAY-USER-LIVING-EN", title: prayer.title, text: prayer.text }, { silent: true });
+    } else if (g.CHIROMBE_PRAYER && g.CHIROMBE_PRAYER.seal) {
+      g.CHIROMBE_PRAYER.seal();
+    }
     if (g.ChirombeAudit && g.ChirombeAudit.append) {
       g.ChirombeAudit.append("LIVING_LITURGY", { title: prayer.title, walk: prayer.source.walk, events: prayer.source.events, nodes: prayer.source.nodes });
     }
