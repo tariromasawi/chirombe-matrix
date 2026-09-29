@@ -179,16 +179,22 @@
               </div>
             </article>
             <article class="card">
-              <div class="card-head"><span>AUDIO TELEMETRY</span><b id="audioMode">STANDBY</b></div>
+              <div class="card-head"><span>HOUSE VOICE</span><b id="audioMode">STANDBY</b></div>
+              <select id="houseVoice"></select>
+              <div class="bl-actions">
+                <button data-track="EN">ENGLISH</button>
+                <button data-track="SN">SHONA</button>
+                <button data-track="BOTH" class="primary">BOTH TRACKS</button>
+              </div>
               <div class="telemetry">
                 <div><span>VOICE</span><b id="voiceName">-</b></div>
+                <div><span>TRACK</span><b id="trackState">BOTH</b></div>
                 <div><span>PRAYER FOCUS</span><b id="prayerFocus">House Cover</b></div>
                 <div><span>LIVING LITURGY</span><b id="livingStatus">READY</b></div>
                 <div><span>DRONE</span><b id="droneState">DRONE OFF</b></div>
                 <div><span>BROADCAST</span><b id="broadcastStatus">IDLE</b></div>
-                <div><span>OSCILLATOR</span><b>136.1 Hz</b></div>
               </div>
-              <p class="note">Night watch stays live while this tab remains open on an awake device. Browsers cannot guarantee sound after the machine sleeps or the tab is closed. This is prayer, voice and tone in a browser. It is not a supernatural weapon and not a 24/7 server.</p>
+              <p class="note">Choose the browser voice. BOTH keeps English and Shona living slots and refreshes them each watch cycle. Shona uses the same chosen voice; dedicated sn-ZW voices appear only if the device provides them.</p>
             </article>
           </div>
           <div class="grid two">
@@ -224,9 +230,10 @@
             <p id="watchLine">Engage Watch Device to hold the night screen.</p>
             <div class="telemetry">
               <div><span>NOW PLAYING</span><b id="watchNowPlaying">-</b></div>
+              <div><span>TRACK</span><b id="trackState">BOTH</b></div>
             </div>
             <div id="watchFeed"></div>
-            <p class="honest">Watch Device mixes prayers with system updates. Living liturgy writes a fresh prayer from the latest walk, audit and roster, then drops it into this queue.</p>
+            <p class="honest">Watch Device mixes prayers with system updates. Living liturgy refreshes one English slot and one Shona slot each cycle. It does not flood the library.</p>
           </article>
         </section>
         <section class="panel" id="panel-audit">
@@ -257,7 +264,7 @@
         </section>
       </main>
     </div>
-    <footer>MWARI NDI MWARI CHIROMBE MATRIX 3.0 77-99-33 <span id="version">3.0.9</span></footer>
+    <footer>MWARI NDI MWARI CHIROMBE MATRIX 3.0 77-99-33 <span id="version">3.0.10</span></footer>
   </div>
   <div id="watchLayer" class="hidden">
     <div class="watch-card">
@@ -280,6 +287,7 @@
   <script src="./js/phase7-prayer.js"></script>
   <script src="./js/phase8-watch.js"></script>
   <script src="./js/phase9-living.js"></script>
+  <script src="./js/phase10-voice.js"></script>
   <script>
     setTimeout(function () {
       var boot = document.getElementById("boot");
