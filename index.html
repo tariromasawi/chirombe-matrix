@@ -7,6 +7,7 @@
   <meta name="description" content="CHIROMBE Matrix 3.0 clean command surface.">
   <title>CHIROMBE Matrix Command Core</title>
   <link rel="stylesheet" href="./css/matrix-shell.css">
+  <link rel="stylesheet" href="./css/bloodline.css">
 </head>
 <body>
   <div id="boot" class="boot">
@@ -95,12 +96,39 @@
           </div>
         </section>
         <section class="panel" id="panel-bloodline">
-          <div class="section-title"><div><div class="eyebrow">AUTHORISED REMEMBRANCE</div><h2>Protection Circle</h2></div><button id="addNode">+ ADD NODE</button></div>
+          <div class="section-title"><div><div class="eyebrow">AUTHORISED REMEMBRANCE 77-99-33</div><h2>Bloodline Matrix</h2></div>
+            <div class="bl-actions">
+              <button id="addNode">+ ADD NODE</button>
+              <button id="nameDescendant">NAME DESCENDANT</button>
+              <button id="coverCircle" class="primary">COVER CIRCLE</button>
+            </div>
+          </div>
+          <div class="bl-metrics">
+            <article><span>CIRCLE</span><strong id="blTotal">0</strong><small>authorised nodes</small></article>
+            <article><span>ANCESTORS</span><strong id="blAncestors">0</strong><small>line of Chirombe</small></article>
+            <article><span>LIVING</span><strong id="blLiving">0</strong><small>present record</small></article>
+            <article><span>REMEMBERED</span><strong id="blRemembered">0</strong><small>eternal spirits</small></article>
+            <article><span>HEIRS</span><strong id="blHeirs">0</strong><small>Tarry and Kenzi</small></article>
+            <article><span>FUTURE</span><strong id="blFuture">0</strong><small>named and unnamed</small></article>
+          </div>
+          <div class="toolbar">
+            <button data-blood-filter="all" class="active">ALL</button>
+            <button data-blood-filter="ancestors">ANCESTORS</button>
+            <button data-blood-filter="living">LIVING</button>
+            <button data-blood-filter="remembered">REMEMBERED</button>
+            <button data-blood-filter="heirs">HEIRS</button>
+            <button data-blood-filter="future">FUTURE</button>
+          </div>
           <div class="card"><div id="familyGrid" class="family-grid"></div></div>
           <div class="grid two">
-            <article class="card"><div class="card-head"><span>LINEAGE GRAPH</span><b>SYMBOLIC</b></div><canvas id="lineageCanvas"></canvas></article>
+            <article class="card"><div class="card-head"><span>LINEAGE GRAPH</span><b>GENERATION TIERS</b></div><canvas id="lineageCanvas"></canvas></article>
             <article class="card">
               <div class="card-head"><span>PROTECTION STATE</span><b id="protectState">READY</b></div>
+              <div id="bloodDetail"></div>
+              <div class="bl-actions">
+                <button id="rememberSelected">MARK REMEMBERED</button>
+                <button id="praySelected">SPEAK COVER</button>
+              </div>
               <div class="shield"><div class="shield-core">Z</div><div>TRUTH LOVE UNITY WISDOM PEACE</div></div>
               <div class="bar"><b id="protectFill"></b></div>
               <div id="gateList" class="gate"></div>
@@ -170,6 +198,7 @@
   <script src="./js/matrix-kernel.js"></script>
   <script src="./js/phase2-bridge.js"></script>
   <script src="./js/matrix-shell.js"></script>
+  <script src="./js/bloodline-matrix.js"></script>
   <script>
     setTimeout(function () {
       var boot = document.getElementById("boot");
