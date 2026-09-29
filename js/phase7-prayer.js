@@ -1,4 +1,4 @@
-/* CHIROMBE MATRIX 3.0 Phase 7. Prayer chamber. Browser audio only. */
+/* CHIROMBE MATRIX 3.0 Phase 7/8. Prayer chamber. Browser audio only. */
 (function (g) {
   "use strict";
   var KEY = "CHIROMBE_MATRIX_PRAYERS_V3";
@@ -144,7 +144,7 @@
     if (ctx.resume) ctx.resume();
     stopDrone(true);
     var master = ctx.createGain();
-    master.gain.value = 0.03;
+    master.gain.value = (g.CHIROMBE_WATCH && g.CHIROMBE_WATCH.status && g.CHIROMBE_WATCH.status().on) ? 0.055 : 0.03;
     master.connect(ctx.destination);
     function tone(hz, type, amp) {
       var osc = ctx.createOscillator();
@@ -186,7 +186,14 @@
   function queue() {
     var written = chamber.prayers.slice();
     if (!written.length) written = SEED.slice();
-    return written;
+    var notes = (g.CHIROMBE_WATCH && g.CHIROMBE_WATCH.bulletins) ? g.CHIROMBE_WATCH.bulletins() : [];
+    var mixed = [];
+    var i;
+    for (i = 0; i < Math.max(written.length, notes.length); i++) {
+      if (written[i]) mixed.push(written[i]);
+      if (notes[i]) mixed.push(notes[i]);
+    }
+    return mixed.length ? mixed : written;
   }
 
   function tickBroadcast() {
@@ -196,9 +203,10 @@
     var p = list[chamber.broadcast.i % list.length];
     chamber.selected = p;
     paintLibrary();
-    setText("prayerFocus", p.title);
-    setText("broadcastStatus", "LIVE  cycle " + (chamber.broadcast.cycles + 1) + "  " + p.title);
+    setText("prayerFocus", p.title || "Bulletin");
+    setText("broadcastStatus", "LIVE  cycle " + (chamber.broadcast.cycles + 1) + "  " + (p.title || p.id));
     setText("audioState", "BROADCAST LIVE");
+    setText("watchNowPlaying", p.title || "Bulletin");
     speak(p.text, function () {
       if (!chamber.broadcast.on) return;
       chamber.broadcast.i += 1;
@@ -208,6 +216,7 @@
   }
 
   function startBroadcast() {
+    if (chamber.broadcast.on) return;
     if (g.CHIROMBE_WALK && g.CHIROMBE_WALK.stop) try { g.CHIROMBE_WALK.stop(); } catch (e) {}
     unlockVoice();
     if (!chamber.drone.on) startDrone();
@@ -216,7 +225,7 @@
     chamber.broadcast.cycles = 0;
     chamber.broadcast.startedAt = now();
     requestWake();
-    audit("BROADCAST_START", { prayers: queue().length, names: rosterNames().length });
+    audit("BROADCAST_START", { prayers: chamber.prayers.length, names: rosterNames().length, bulletins: !!(g.CHIROMBE_WATCH) });
     setText("broadcastStatus", "LIVE NIGHT WATCH");
     tickBroadcast();
   }
