@@ -1,4 +1,4 @@
-/* CHIROMBE MATRIX 3.0 Phase 3 Bloodline Matrix. Symbolic cover only. */
+/* CHIROMBE MATRIX 3.0 Phase 4 Bloodline Matrix. Symbolic cover only. */
 (function (g) {
   "use strict";
   var TIER = {"great-great-grandfather":0,"great-grandfather":1,"grandfather":2,"grandmother":2,"father":3,"mother":3,"self":4,"brother":4,"sister":4,"son":5,"adopted nephew/son":5,"house":6,"future":7};
@@ -46,11 +46,12 @@
     });
   }
   function select(n){
-    state.selected=n;
+    state.selected=n; if(g.CHIROMBE_BLOODLINE) g.CHIROMBE_BLOODLINE.selected=n;
     var box=$("bloodDetail");
     if(box){
       box.innerHTML="<div class='eyebrow'>SELECTED NODE</div><h3>"+esc(n.name)+"</h3><div class='telemetry'><div><span>GENERATION</span><b>"+esc(n.generation||"-")+"</b></div><div><span>ROLE</span><b>"+esc(n.role)+"</b></div><div><span>TIER</span><b>"+esc(LABEL[n.tier]||n.tier)+"</b></div><div><span>REMEMBRANCE</span><b>"+(n.remembrance?"YES":"LIVING RECORD")+"</b></div><div><span>COVER MODEL</span><b>"+(n.protect?"INCLUDED":"NOT MARKED")+"</b></div></div><p class='honest'>Authorised remembrance record. Cover means integrity, audit, watchdog and ritual language. Not a claim of supernatural causation.</p>";
     }
+    var lit=$("liturgyFocus"); if(lit) lit.textContent=n.name;
     if(g.ChirombeAudit&&g.ChirombeAudit.append) g.ChirombeAudit.append("BLOODLINE_SELECT",{name:n.name,role:n.role});
     drawMap();
   }
@@ -131,16 +132,30 @@
     if(!state.selected||!state.selected.raw) return;
     state.selected.raw.remembrance=true; state.selected.raw.status="remembered";
     if(g.ChirombeAudit&&g.ChirombeAudit.append) g.ChirombeAudit.append("REMEMBER",{name:state.selected.name});
-    if(g.CHIROMBE_LITURGY_AUDIO) g.CHIROMBE_LITURGY_AUDIO.speak({text:"Mwari ndi Mwari. "+state.selected.name+" is remembered with dignity, love and faith."});
+    if(g.CHIROMBE_LITURGY && g.CHIROMBE_LITURGY.cover) g.CHIROMBE_LITURGY.cover(state.selected.raw);
     render();
   }
   function praySelected(){
     var n=state.selected;
+    var raw=n && n.raw ? n.raw : n;
+    if(g.CHIROMBE_LITURGY && g.CHIROMBE_LITURGY.cover) {
+      g.CHIROMBE_LITURGY.cover(raw);
+      var mode=document.getElementById("audioMode"); if(mode) mode.textContent="COVERING "+((n&&n.name)||"HOUSE");
+      var lit=document.getElementById("liturgyFocus"); if(lit) lit.textContent=(n&&n.name)||"House of Masawi";
+      return;
+    }
     var line=n?"Mwari ndi Mwari. Peace, wisdom and protection over "+n.name+".":"Mwari ndi Mwari. Peace over the House of Masawi.";
     if(g.CHIROMBE_LITURGY_AUDIO) g.CHIROMBE_LITURGY_AUDIO.speak({text:line});
-    if(g.ChirombeAudit&&g.ChirombeAudit.append) g.ChirombeAudit.append("BLOODLINE_PRAYER",{name:n&&n.name});
+  }
+  function liturgySelected(){
+    var n=state.selected;
+    var raw=n && n.raw ? n.raw : null;
+    if(g.CHIROMBE_LITURGY && g.CHIROMBE_LITURGY.start) g.CHIROMBE_LITURGY.start(raw);
+    var mode=document.getElementById("audioMode"); if(mode) mode.textContent= raw ? ("LITURGY "+n.name) : "LIVING LITURGY";
+    var lit=document.getElementById("liturgyFocus"); if(lit) lit.textContent=(n&&n.name)||"House of Masawi";
   }
   function render(){
+    if(g.ChirombeCore && g.ChirombeCore.sealRoster) g.ChirombeCore.sealRoster();
     state.nodes=roster();
     paintStats(stats(state.nodes));
     paintGrid(state.nodes);
@@ -157,10 +172,11 @@
     if($("nameDescendant")) $("nameDescendant").onclick=nameDescendant;
     if($("rememberSelected")) $("rememberSelected").onclick=rememberSelected;
     if($("praySelected")) $("praySelected").onclick=praySelected;
+    if($("liturgySelected")) $("liturgySelected").onclick=liturgySelected;
     g.addEventListener("chirombe-family-ready", render);
     render();
     setInterval(function(){ if($("panel-bloodline") && $("panel-bloodline").classList.contains("active")) drawMap(); }, 80);
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot); else boot();
-  g.CHIROMBE_BLOODLINE={render:render, select:select, stats:function(){ return stats(roster()); }};
+  g.CHIROMBE_BLOODLINE={render:render, select:select, selected:null, stats:function(){ return stats(roster()); }};
 })(typeof window!=="undefined"?window:globalThis);
