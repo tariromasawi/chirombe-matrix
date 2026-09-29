@@ -5,6 +5,7 @@
   function $(id) { return document.getElementById(id); }
   function setText(id, v) { var el = $(id); if (el) el.textContent = v; }
   function names(list) { return (list || []).map(function (m) { return m.name || m; }).filter(Boolean); }
+  function all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
 
   function roster() {
     return (g.ChirombeCore && g.ChirombeCore.family) || [];
@@ -67,8 +68,12 @@
   }
 
   function bind() {
-    if ($("composeLiving")) $("composeLiving").onclick = function () { release({ declare: false, broadcast: false }); };
-    if ($("releaseLiving")) $("releaseLiving").onclick = function () { release({ declare: true, broadcast: true }); };
+    all("#composeLiving").forEach(function (btn) {
+      btn.onclick = function () { release({ declare: false, broadcast: false }); };
+    });
+    all("#releaseLiving").forEach(function (btn) {
+      btn.onclick = function () { release({ declare: true, broadcast: true }); };
+    });
     g.addEventListener("chirombe-walk-complete", function () { release({ declare: false, broadcast: false }); });
     g.addEventListener("chirombe-walk-stop", function () { release({ declare: false, broadcast: false }); });
     if (g.CHIROMBE_WATCH && g.CHIROMBE_WATCH.enter) {
