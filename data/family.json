@@ -1,0 +1,33 @@
+{
+  "circle": "House of Masawi",
+  "scope": "authorised-remembrance-and-protection-only",
+  "matrix": "77-99-33",
+  "members": [
+    {"id":"FAM-GGG-CHIROMBE","name":"Chirombe","generation":"great-great-grandfather","role":"ANCESTOR","protect":true,"remembrance":true},
+    {"id":"FAM-GG-MAKWENGURA","name":"Makwengura","generation":"great-grandfather","role":"ANCESTOR","protect":true,"remembrance":true},
+    {"id":"FAM-GF-MASAWI","name":"Masawi","generation":"grandfather","role":"ANCESTOR","protect":true,"remembrance":true},
+    {"id":"FAM-GM-MASARURA","name":"Masarura","generation":"grandmother","role":"ANCESTOR","protect":true,"remembrance":true},
+    {"id":"FAM-F-SABASTIAN","name":"Sebastian Karumekangu Masawi","generation":"father","role":"PARENT","protect":true},
+    {"id":"FAM-M-RISTO","name":"Risto Kasirori Masawi","generation":"mother","role":"PARENT","protect":true},
+    {"id":"FAM-SELF-TARIRO","name":"HRH Saint Tariro Masawi","generation":"self","role":"CORE","protect":true},
+    {"id":"FAM-SP-TARRY","name":"HRH Tarry Kupakwashe Masawi","alsoKnownAs":["Tarry"],"generation":"son","previousGeneration":"spouse","role":"CORE","protect":true},
+    {"id":"FAM-AD-KENZI","name":"Kenzi Masawi","generation":"adopted nephew/son","role":"HEIR","protect":true},
+    {"id":"FAM-BR-TENDERAYI","name":"Tenderayi","generation":"brother","role":"SIBLING","protect":true},
+    {"id":"FAM-BR-SILENT","name":"Silent","generation":"brother","role":"SIBLING","protect":true},
+    {"id":"FAM-BR-TRYMORE","name":"Trymore","generation":"brother","role":"SIBLING","protect":true},
+    {"id":"FAM-BR-CHARLES","name":"Charles","generation":"brother","role":"SIBLING","protect":true},
+    {"id":"FAM-BR-TATENDA","name":"Tatenda","generation":"brother","role":"SIBLING","protect":true},
+    {"id":"FAM-SI-RHODA","name":"Rhoda","generation":"sister","role":"SIBLING","protect":true,"remembrance":true,"status":"remembered"},
+    {"id":"FAM-SI-ABIGAIL","name":"Abigail","generation":"sister","role":"SIBLING","protect":true,"remembrance":true,"status":"remembered"},
+    {"id":"FAM-SI-CORINNA","name":"Corinna","generation":"sister","role":"SIBLING","protect":true,"remembrance":true,"status":"remembered"},
+    {"id":"FAM-HOUSE","name":"House of Masawi","generation":"house","role":"HOUSE","protect":true},
+    {"id":"FAM-DESC","name":"Descendants of the House — named and unnamed","generation":"future","role":"DESCENDANT","protect":true,"anonymousUntilNamed":true}
+  ],
+  "links": [
+    ["Chirombe","Makwengura"],["Makwengura","Masawi"],["Masawi","Sebastian Karumekangu Masawi"],
+    ["Masarura","Sebastian Karumekangu Masawi"],["Sebastian Karumekangu Masawi","HRH Saint Tariro Masawi"],
+    ["Risto Kasirori Masawi","HRH Saint Tariro Masawi"],
+    ["HRH Saint Tariro Masawi","HRH Tarry Kupakwashe Masawi"],
+    ["HRH Saint Tariro Masawi","Kenzi Masawi"]
+  ]
+}

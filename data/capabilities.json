@@ -1,0 +1,17 @@
+{
+  "system": "CHIROMBE-MATRIX",
+  "version": "3.0.0",
+  "protocol": "CHIROMBE-3.0",
+  "schemaVersion": 3,
+  "features": {
+    "commandBus": true,
+    "protectionCore": true,
+    "auditChain": true,
+    "watchdog": true,
+    "bloodline": true,
+    "engines": true,
+    "audio": true,
+    "matrixVisuals": true,
+    "deepKernel": "optional-not-auto-executed"
+  }
+}
