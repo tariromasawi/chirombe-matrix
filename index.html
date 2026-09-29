@@ -181,11 +181,21 @@
           </div>
         </section>
         <section class="panel" id="panel-audit">
-          <div class="section-title"><div><div class="eyebrow">INTEGRITY</div><h2>Audit Chain</h2></div><button id="verifyAudit">VERIFY</button></div>
+          <div class="section-title"><div><div class="eyebrow">INTEGRITY</div><h2>Audit Chain</h2></div>
+            <div class="bl-actions">
+              <button id="verifyAudit">VERIFY</button>
+              <button id="exportWalks">EXPORT WALKS</button>
+            </div>
+          </div>
           <div class="grid two">
             <article class="card"><pre id="auditOut">Loading audit state</pre></article>
             <article class="card"><div class="card-head"><span>JOURNAL</span><b>APPEND-ONLY</b></div><div id="journal" class="feed"></div></article>
           </div>
+          <article class="card">
+            <div class="card-head"><span>HOUSE LITURGY LEDGER</span><b>DATED WALKS</b></div>
+            <p class="honest">Each completed or stopped House walk is sealed here and on the audit chain. Records live in this browser only.</p>
+            <div id="walkLedger"></div>
+          </article>
         </section>
         <section class="panel" id="panel-health">
           <div class="section-title"><div><div class="eyebrow">WATCHDOG</div><h2>System Health</h2></div><button id="refreshHealth">REFRESH</button></div>
@@ -198,7 +208,7 @@
         </section>
       </main>
     </div>
-    <footer>MWARI NDI MWARI CHIROMBE MATRIX 3.0 77-99-33 <span id="version">3.0.5</span></footer>
+    <footer>MWARI NDI MWARI CHIROMBE MATRIX 3.0 77-99-33 <span id="version">3.0.6</span></footer>
   </div>
   <script src="./js/matrix-kernel.js"></script>
   <script src="./js/phase4-seal.js"></script>
@@ -206,6 +216,7 @@
   <script src="./js/matrix-shell.js"></script>
   <script src="./js/bloodline-matrix.js"></script>
   <script src="./js/phase5-walk.js"></script>
+  <script src="./js/phase6-ledger.js"></script>
   <script>
     setTimeout(function () {
       var boot = document.getElementById("boot");
