@@ -21,13 +21,21 @@
     {"id":"FAM-SI-ABIGAIL","name":"Abigail","generation":"sister","role":"SIBLING","protect":true,"remembrance":true,"status":"remembered"},
     {"id":"FAM-SI-CORINNA","name":"Corinna","generation":"sister","role":"SIBLING","protect":true,"remembrance":true,"status":"remembered"},
     {"id":"FAM-HOUSE","name":"House of Masawi","generation":"house","role":"HOUSE","protect":true},
-    {"id":"FAM-DESC","name":"Descendants of the House — named and unnamed","generation":"future","role":"DESCENDANT","protect":true,"anonymousUntilNamed":true}
+    {"id":"FAM-DESC","name":"Descendants of the House - named and unnamed","generation":"future","role":"DESCENDANT","protect":true,"anonymousUntilNamed":true}
   ],
   "links": [
     ["Chirombe","Makwengura"],["Makwengura","Masawi"],["Masawi","Sebastian Karumekangu Masawi"],
     ["Masarura","Sebastian Karumekangu Masawi"],["Sebastian Karumekangu Masawi","HRH Saint Tariro Masawi"],
     ["Risto Kasirori Masawi","HRH Saint Tariro Masawi"],
     ["HRH Saint Tariro Masawi","HRH Tarry Kupakwashe Masawi"],
-    ["HRH Saint Tariro Masawi","Kenzi Masawi"]
+    ["HRH Saint Tariro Masawi","Kenzi Masawi"],
+    ["Sebastian Karumekangu Masawi","Tenderayi"],["Risto Kasirori Masawi","Tenderayi"],
+    ["Sebastian Karumekangu Masawi","Silent"],["Risto Kasirori Masawi","Silent"],
+    ["Sebastian Karumekangu Masawi","Trymore"],["Risto Kasirori Masawi","Trymore"],
+    ["Sebastian Karumekangu Masawi","Charles"],["Risto Kasirori Masawi","Charles"],
+    ["Sebastian Karumekangu Masawi","Tatenda"],["Risto Kasirori Masawi","Tatenda"],
+    ["Sebastian Karumekangu Masawi","Rhoda"],["Risto Kasirori Masawi","Rhoda"],
+    ["Sebastian Karumekangu Masawi","Abigail"],["Risto Kasirori Masawi","Abigail"],
+    ["Sebastian Karumekangu Masawi","Corinna"],["Risto Kasirori Masawi","Corinna"]
   ]
 }
