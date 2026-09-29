@@ -1,4 +1,4 @@
-/* CHIROMBE MATRIX 3.0 Phase 7/8. Prayer chamber. Browser audio only. */
+/* CHIROMBE MATRIX 3.0 Phase 7-10. Prayer chamber. Browser audio only. */
 (function (g) {
   "use strict";
   var KEY = "CHIROMBE_MATRIX_PRAYERS_V3";
@@ -40,12 +40,12 @@
     var stored = [];
     try { stored = JSON.parse(localStorage.getItem(KEY) || "[]") || []; } catch (e) { stored = []; }
     var byId = {};
-    SEED.concat(stored).forEach(function (p) { if (p && p.id) byId[p.id] = p; });
+    SEED.concat(stored).forEach(function (p) { if (p && p.id && p.text) byId[p.id] = p; });
     chamber.prayers = Object.keys(byId).map(function (k) { return byId[k]; });
   }
   function persistUser() {
-    var user = chamber.prayers.filter(function (p) { return String(p.id).indexOf("PRAY-USER-") === 0; });
-    try { localStorage.setItem(KEY, JSON.stringify(user.slice(-40))); } catch (e) {}
+    var user = chamber.prayers.filter(function (p) { return String(p.id).indexOf("PRAY-USER-") === 0 && p.text; });
+    try { localStorage.setItem(KEY, JSON.stringify(user.slice(-24))); } catch (e) {}
   }
 
   function rosterNames() {
@@ -96,15 +96,24 @@
     paintLibrary();
   }
 
+  function ingest(rec, opts) {
+    opts = opts || {};
+    if (!rec || !rec.id) return null;
+    chamber.prayers = chamber.prayers.filter(function (p) { return p.id !== rec.id; });
+    if (!opts.remove && rec.text) chamber.prayers.push(rec);
+    persistUser();
+    paintLibrary();
+    if (!opts.silent && rec.text) audit("PRAYER_WRITE", { id: rec.id, title: rec.title, chars: (rec.text || "").length });
+    return rec;
+  }
+
   function sealPrayer() {
     var title = (($("prayerTitle") && $("prayerTitle").value) || "Untitled prayer").trim();
     var text = (($("prayerBody") && $("prayerBody").value) || "").trim();
     if (!text) return;
     var rec = { id: "PRAY-USER-" + Date.now().toString(36).toUpperCase(), title: title, text: text, at: now() };
-    chamber.prayers.push(rec);
-    persistUser();
+    ingest(rec);
     select(rec.id);
-    audit("PRAYER_WRITE", { id: rec.id, title: rec.title, chars: text.length });
     setText("broadcastStatus", "PRAYER SEALED " + rec.title);
   }
 
@@ -120,11 +129,18 @@
     speechSynthesis.cancel();
     var u = new SpeechSynthesisUtterance(text);
     u.rate = 0.88;
+    if (g.CHIROMBE_VOICE && g.CHIROMBE_VOICE.apply) g.CHIROMBE_VOICE.apply(u);
+    else {
+      var v = g.CHIROMBE_VOICE && g.CHIROMBE_VOICE.current && g.CHIROMBE_VOICE.current();
+      if (v) u.voice = v;
+    }
     u.onend = function () { if (done) done(); };
     u.onerror = function () { if (done) done(); };
     chamber.utter = u;
     speechSynthesis.speak(u);
     setText("audioMode", chamber.broadcast.on ? "BROADCAST" : "DECLARING");
+    var voice = u.voice && u.voice.name;
+    if (voice) setText("voiceName", voice);
   }
 
   function declareSelected() {
@@ -210,7 +226,10 @@
     speak(p.text, function () {
       if (!chamber.broadcast.on) return;
       chamber.broadcast.i += 1;
-      if (chamber.broadcast.i % list.length === 0) chamber.broadcast.cycles += 1;
+      if (chamber.broadcast.i % list.length === 0) {
+        chamber.broadcast.cycles += 1;
+        if (g.dispatchEvent) g.dispatchEvent(new CustomEvent("chirombe-watch-cycle", { detail: { cycles: chamber.broadcast.cycles } }));
+      }
       chamber.broadcast.timer = setTimeout(tickBroadcast, 1800);
     });
   }
@@ -272,6 +291,7 @@
   g.CHIROMBE_PRAYER = {
     compose: composeFromCircle,
     seal: sealPrayer,
+    ingest: ingest,
     declare: declareSelected,
     droneOn: startDrone,
     droneOff: function () { stopDrone(false); },
