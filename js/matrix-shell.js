@@ -1,10 +1,10 @@
-/* CHIROMBE MATRIX 3.0 — command surface. Kernel already installed the public APIs. */
+/* CHIROMBE MATRIX 3.0 command surface. Kernel already installed the public APIs. */
 (function () {
   "use strict";
   var $ = function (s) { return document.querySelector(s); };
   var $$ = function (s) { return Array.from(document.querySelectorAll(s)); };
   var state = { mode: "network", events: 0, cycle: 0, audio: null, osc: null, analyser: null };
-  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, function (c) { return ({ "&": "&", "<": "<", ">": ">", '"': """, "'": "&#39;" })[c]; }); }
+  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, function (c) { return "&#" + c.charCodeAt(0) + ";"; }); }
   function log(msg, type) {
     type = type || "SYS";
     var row = document.createElement("div"); row.innerHTML = "<b>" + escapeHtml(type) + "</b> " + escapeHtml(msg);
@@ -25,7 +25,7 @@
     if (!f.length) { grid.innerHTML = '<div class="family-node"><b>Protected circle empty</b><span>Kernel family seed missing.</span></div>'; return; }
     f.forEach(function (x, i) {
       var d = document.createElement("div"); d.className = "family-node";
-      d.innerHTML = "<b>" + escapeHtml(x.name || ("NODE " + (i + 1))) + "</b><span>" + escapeHtml(x.relation || x.role || "authorised node") + (x.remembrance ? " · REMEMBERED" : " · PROTECTED") + "</span>";
+      d.innerHTML = "<b>" + escapeHtml(x.name || ("NODE " + (i + 1))) + "</b><span>" + escapeHtml(x.relation || x.role || "authorised node") + (x.remembrance ? " REMEMBERED" : " PROTECTED") + "</span>";
       grid.appendChild(d);
     });
     if ($("#mNodes")) $("#mNodes").textContent = f.length;
@@ -35,7 +35,7 @@
     var armed = safe(function () { return !!(window.ZionProtect && window.ZionProtect.snapshot().armed); }, false);
     var rows = [
       ["INTEGRITY", snap.auditValid ? "VERIFIED" : "DEGRADED"],
-      ["BLOODLINE DATA", (snap.familyNodes || 0) > 0 ? "VERIFIED · " + snap.familyNodes + " NODES" : "EMPTY"],
+      ["BLOODLINE DATA", (snap.familyNodes || 0) > 0 ? "VERIFIED " + snap.familyNodes + " NODES" : "EMPTY"],
       ["WATCHDOG", snap.status === "OK" ? "ACTIVE" : "UNKNOWN"],
       ["AUDIT", snap.auditValid ? "VERIFIED" : "CHECK"],
       ["ENGINE BUS", (window.CHIROMBE_ENGINE && window.CHIROMBE_ENGINE.status().status) || "READY"],
@@ -61,23 +61,23 @@
     var eng = safe(function () { return window.CHIROMBE_ENGINE.status(); }, { status: "ENGINE READY" });
     if ($("#engineState")) $("#engineState").textContent = eng.status || "ENGINE READY";
     if ($("#healthEngine")) $("#healthEngine").textContent = JSON.stringify(eng, null, 2);
-    if ($("#mAudit")) $("#mAudit").textContent = safe(function () { return window.ChirombeAudit.verify() ? "VALID" : "CHECK"; }, "—");
+    if ($("#mAudit")) $("#mAudit").textContent = safe(function () { return window.ChirombeAudit.verify() ? "VALID" : "CHECK"; }, "-");
     if ($("#auditOut")) $("#auditOut").textContent = JSON.stringify({ valid: safe(function () { return window.ChirombeAudit.verify(); }, false), head: safe(function () { return window.ChirombeAudit.head(); }, null), length: safe(function () { return window.ChirombeAudit.export().length; }, 0) }, null, 2);
     var diags = $("#diagnostics");
     if (diags) {
       var items = [["kernel", true], ["command-bus", !!window.ChirombeBus], ["family", !!(window.ChirombeCore && window.ChirombeCore.family && window.ChirombeCore.family.length)], ["audit", !!(window.ChirombeAudit && window.ChirombeAudit.verify())], ["watchdog", !!window.ChirombeWatchdog], ["engine", !!window.CHIROMBE_ENGINE], ["audio-api", !!window.speechSynthesis], ["deep-kernel", false]];
-      diags.innerHTML = items.map(function (it) { return '<div class="diag ' + (it[1] ? "ok" : "warn") + '">' + it[0].toUpperCase() + " · " + (it[1] ? "OK" : "OPTIONAL / STANDBY") + "</div>"; }).join("");
+      diags.innerHTML = items.map(function (it) { return '<div class="diag ' + (it[1] ? "ok" : "warn") + '">' + it[0].toUpperCase() + " " + (it[1] ? "OK" : "OPTIONAL / STANDBY") + "</div>"; }).join("");
     }
     protectionGates();
   }
   function command(name, args) {
     var r = safe(function () { return window.ChirombeBus.executeCommand(name, args || {}); }, null);
-    log(name + " → " + JSON.stringify((r && (r.result || r)) || r), "CMD"); return r;
+    log(name + " -> " + JSON.stringify((r && (r.result || r)) || r), "CMD"); return r;
   }
   function protect() {
     safe(function () { return window.ZCCA.protect(); }, null);
     if ($("#protectState")) $("#protectState").textContent = "ARMED";
-    log("protection cycle requested — computational model armed", "PROTECT"); coreStatus();
+    log("protection cycle requested - computational model armed", "PROTECT"); coreStatus();
   }
   $("#protect").onclick = protect;
   $("#fullCycle").onclick = function () { protect(); command("status"); command("health"); safe(function () { return window.CHIROMBE_ENGINE.activate(); }, null); safe(function () { return window.ChirombeCore.evolve(); }, null); coreStatus(); };
@@ -97,7 +97,7 @@
       if (name === "deep") {
         var r = safe(function () { return window.CHIROMBE_ENGINE.activate(); }, { state: "NOT_AVAILABLE" });
         if ($("#engineOutput")) $("#engineOutput").textContent = JSON.stringify({ deepKernel: "NOT_EXECUTED", reason: "Historical 729KB artifact is archived. Activation arms the live engine only.", engine: r }, null, 2);
-        log("deep kernel refused — historical artifact stays archived", "KERNEL"); return;
+        log("deep kernel refused - historical artifact stays archived", "KERNEL"); return;
       }
       var map = { sense: "sense", translate: "translate", nim: "nim", eea: "eea", ppm: "ppm", isg: "strategy.generate", reprogram: "reprogram", broadcast: "broadcast", simulation: "simulation.run", pioneer: "pioneer.hypothesis", prophetic: "prophetic.input" };
       var r2 = command(map[name] || name); if ($("#engineOutput")) $("#engineOutput").textContent = JSON.stringify(r2, null, 2);
@@ -154,7 +154,7 @@
     if ($("#audioMode")) $("#audioMode").textContent = "UNLOCKED";
     var v = safe(function () { return window.CHIROMBE_LITURGY_AUDIO.chooseVoice(); }, null);
     if ($("#voiceName")) $("#voiceName").textContent = (v && v.name) || "Browser voice";
-    log("audio unlocked — 136.1 Hz symbolic oscillator", "AUDIO"); drawAudio();
+    log("audio unlocked - 136.1 Hz symbolic oscillator", "AUDIO"); drawAudio();
   }
   $("#unlockAudio").onclick = audioUnlock;
   $("#stopAudio").onclick = function () { safe(function () { return window.CHIROMBE_LITURGY_AUDIO.stop(); }, null); if ($("#audioMode")) $("#audioMode").textContent = "STOPPED"; };
@@ -176,7 +176,7 @@
     setTimeout(function () {
       if ($("#boot")) $("#boot").classList.add("hidden"); if ($("#app")) $("#app").classList.remove("hidden");
       coreStatus(); family(); canvasLoop("matrixCanvas"); canvasLoop("networkCanvas"); drawLineage(); refreshEngineCards();
-      log("matrix shell online — historical kernel not executed", "READY");
+      log("matrix shell online - historical kernel not executed", "READY");
     }, 280);
     setInterval(function () {
       state.cycle++; if ($("#cycle")) $("#cycle").textContent = String(state.cycle).padStart(6, "0");
