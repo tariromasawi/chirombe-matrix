@@ -19,7 +19,7 @@
 .walk-record-head span{color:#d8b967}
 .walk-record-meta{color:#6d9683;font-size:11px;margin:6px 0}
 .walk-record-circle{color:#cde8db;font-size:12px;line-height:1.45}
-.prayer-composer input,.prayer-composer textarea{width:100%;background:#020806;color:#d8f8ef;border:1px solid #183d2f;border-radius:8px;padding:10px;font:inherit;margin:0 0 8px}
+.prayer-composer input,.prayer-composer textarea,#houseVoice{width:100%;background:#020806;color:#d8f8ef;border:1px solid #183d2f;border-radius:8px;padding:10px;font:inherit;margin:0 0 8px}
 .prayer-composer textarea{min-height:160px;resize:vertical;line-height:1.5}
 #prayerLibrary{display:grid;gap:8px}
 .prayer-item{text-align:left;width:100%}
