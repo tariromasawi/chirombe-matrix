@@ -160,23 +160,48 @@
           <pre id="engineOutput" class="console">ENGINE OUTPUT READY</pre>
         </section>
         <section class="panel" id="panel-audio">
-          <div class="section-title"><div><div class="eyebrow">LIVING LITURGY AUDIO</div><h2>Resonance Chamber</h2></div><button class="primary" id="unlockAudio">UNLOCK AUDIO</button></div>
+          <div class="section-title"><div><div class="eyebrow">LIVING LITURGY AUDIO</div><h2>Prayer Chamber</h2></div>
+            <div class="bl-actions">
+              <button class="primary" id="unlockAudio">UNLOCK AUDIO</button>
+              <button class="primary" id="startBroadcast">START NIGHT WATCH</button>
+              <button id="stopBroadcast">STOP BROADCAST</button>
+            </div>
+          </div>
           <div class="grid two">
             <article class="card">
               <div class="audio-orb"><canvas id="audioCanvas"></canvas><div class="orb-label">MWARI<br>NDI MWARI</div></div>
               <div class="audio-controls">
                 <button id="speakPrayer">SPEAK PRAYER</button><button id="stopAudio">STOP</button><button id="liturgy">LIVING LITURGY</button>
+                <button id="startDrone">PROTECTION DRONE</button><button id="stopDrone">STOP DRONE</button>
               </div>
             </article>
             <article class="card">
               <div class="card-head"><span>AUDIO TELEMETRY</span><b id="audioMode">STANDBY</b></div>
               <div class="telemetry">
                 <div><span>VOICE</span><b id="voiceName">-</b></div>
-                <div><span>RATE</span><b>0.88</b></div>
+                <div><span>PRAYER FOCUS</span><b id="prayerFocus">House Cover</b></div>
+                <div><span>DRONE</span><b id="droneState">DRONE OFF</b></div>
+                <div><span>BROADCAST</span><b id="broadcastStatus">IDLE</b></div>
                 <div><span>OSCILLATOR</span><b>136.1 Hz</b></div>
                 <div><span>MODE</span><b>SYMBOLIC / ACOUSTIC</b></div>
               </div>
-              <p class="note">Audio is generated locally after a user gesture. It is a devotional and acoustic layer, not evidence of supernatural transmission.</p>
+              <p class="note">Night watch stays live while this tab remains open on an awake device. Browsers cannot guarantee sound after the machine sleeps or the tab is closed. This is prayer, voice and tone in a browser. It is not a supernatural weapon and not a 24/7 server.</p>
+            </article>
+          </div>
+          <div class="grid two">
+            <article class="card prayer-composer">
+              <div class="card-head"><span>WRITE AND DECLARE</span><b>ADVANCED PRAYER</b></div>
+              <input id="prayerTitle" type="text" value="House Cover" maxlength="120">
+              <textarea id="prayerBody" maxlength="6000"></textarea>
+              <div class="bl-actions">
+                <button id="composeCircle">COMPOSE FROM CIRCLE</button>
+                <button id="sealPrayer">SEAL PRAYER</button>
+                <button class="primary" id="declarePrayer">DECLARE</button>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-head"><span>PRAYER LIBRARY</span><b>LIVE QUEUE</b></div>
+              <div id="prayerLibrary"></div>
             </article>
           </div>
         </section>
@@ -208,7 +233,7 @@
         </section>
       </main>
     </div>
-    <footer>MWARI NDI MWARI CHIROMBE MATRIX 3.0 77-99-33 <span id="version">3.0.6</span></footer>
+    <footer>MWARI NDI MWARI CHIROMBE MATRIX 3.0 77-99-33 <span id="version">3.0.7</span></footer>
   </div>
   <script src="./js/matrix-kernel.js"></script>
   <script src="./js/phase4-seal.js"></script>
@@ -217,6 +242,7 @@
   <script src="./js/bloodline-matrix.js"></script>
   <script src="./js/phase5-walk.js"></script>
   <script src="./js/phase6-ledger.js"></script>
+  <script src="./js/phase7-prayer.js"></script>
   <script>
     setTimeout(function () {
       var boot = document.getElementById("boot");
