@@ -1,0 +1,11 @@
+{
+  "name": "CHIROMBE Matrix Watch",
+  "short_name": "CHIROMBE",
+  "description": "House of Masawi watch device. Prayer, cover and system bulletin.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#02060a",
+  "theme_color": "#02060a",
+  "lang": "en"
+}
