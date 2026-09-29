@@ -1,0 +1,20 @@
+.blood-stats{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:10px}
+.blood-stats article{border:1px solid #183d2f;background:linear-gradient(180deg,#07120e,#040b08);border-radius:12px;padding:12px}
+.blood-stats span,.blood-stats small{display:block;color:#6d9683;font-size:9px;letter-spacing:.12em}
+.blood-stats strong{display:block;font-size:22px;color:#dfffea;margin:6px 0}
+.blood-toolbar{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 10px}
+.blood-toolbar button.active{border-color:#c9ad61;color:#ffe6a1}
+.blood-map{display:grid;grid-template-columns:1.7fr .9fr;gap:10px;min-height:520px}
+.blood-map .map-card{padding:0;overflow:hidden;min-height:520px}
+.blood-map canvas{width:100%;height:520px;display:block;cursor:pointer}
+.family-node{text-align:left;width:100%}
+.family-node.remembered{border-color:#665528}
+.family-node.core{border-color:#c9ad61}
+.family-node.heir{border-color:#2f8f63}
+.family-node.future{border-style:dashed}
+#bloodDetail h3{margin:6px 0 12px;font-size:20px;letter-spacing:.04em}
+@media(max-width:900px){
+  .blood-stats{grid-template-columns:repeat(3,1fr)}
+  .blood-map{grid-template-columns:1fr}
+  .blood-map canvas,.blood-map .map-card{min-height:380px;height:380px}
+}
