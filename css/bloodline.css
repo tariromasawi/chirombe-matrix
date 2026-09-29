@@ -1,0 +1,17 @@
+#panel-bloodline .bl-metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:0 0 12px}
+#panel-bloodline .bl-metrics article{padding:12px;border:1px solid #183d2f;border-radius:12px;background:linear-gradient(180deg,#07120e,#040b08)}
+#panel-bloodline .bl-metrics span,#panel-bloodline .bl-metrics small{display:block;color:#6d9683;font-size:9px;letter-spacing:.12em}
+#panel-bloodline .bl-metrics strong{display:block;font-size:22px;color:#dfffea;margin:6px 0}
+#lineageCanvas{width:100%;height:520px;display:block;background:#020806;border-radius:10px}
+.family-node{width:100%;text-align:left}
+.family-node.remembered{border-color:#c9ad61;color:#ffe6a1}
+.family-node.core{border-color:#8be2b1}
+.family-node.heir{border-color:#7aa7d4}
+.family-node.future{border-style:dashed;border-color:#3d6d58}
+.family-node.selected,.family-node:focus{box-shadow:0 0 18px #36b67a44}
+#bloodDetail h3{margin:6px 0 10px;letter-spacing:.04em}
+.bl-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+@media(max-width:900px){
+  #panel-bloodline .bl-metrics{grid-template-columns:repeat(3,1fr)}
+  #lineageCanvas{height:380px}
+}
