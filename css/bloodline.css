@@ -27,7 +27,15 @@
 .prayer-item b,.prayer-item span{display:block}
 .prayer-item span{font-size:10px;color:#6d9683;margin-top:6px}
 #broadcastStatus,#droneState,#prayerFocus{letter-spacing:.08em}
+#watchLayer{position:fixed;inset:0;z-index:80;background:radial-gradient(circle at center,#0b2418 0,#02060a 62%);display:grid;place-items:center;padding:24px}
+#watchLayer.hidden{display:none!important}
+.watch-card{max-width:820px;width:100%;text-align:center}
+.watch-card h2{font-size:42px;letter-spacing:.18em;margin:8px 0}
+.watch-card p{color:#86a99a}
+#watchFeed{text-align:left;max-height:280px;overflow:auto;margin:18px 0;font-size:12px;line-height:1.6;color:#9cc5b2}
+#watchFeed b{color:#d8b967}
 @media(max-width:900px){
   #panel-bloodline .bl-metrics{grid-template-columns:repeat(3,1fr)}
   #lineageCanvas{height:380px}
+  .watch-card h2{font-size:26px}
 }
