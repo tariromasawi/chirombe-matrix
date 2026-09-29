@@ -13,6 +13,12 @@
 #bloodDetail h3{margin:6px 0 10px;letter-spacing:.04em}
 .bl-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
 #walkStatus{font-size:11px;letter-spacing:.12em;color:#d8b967;min-height:16px}
+#walkLedger{display:grid;gap:10px}
+.walk-record{padding:12px;border:1px solid #183d2f;border-radius:12px;background:#07120e}
+.walk-record-head{display:flex;justify-content:space-between;gap:8px;color:#dfffea;letter-spacing:.08em;font-size:12px}
+.walk-record-head span{color:#d8b967}
+.walk-record-meta{color:#6d9683;font-size:11px;margin:6px 0}
+.walk-record-circle{color:#cde8db;font-size:12px;line-height:1.45}
 @media(max-width:900px){
   #panel-bloodline .bl-metrics{grid-template-columns:repeat(3,1fr)}
   #lineageCanvas{height:380px}
