@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#02060a">
   <meta name="description" content="CHIROMBE Matrix 3.0 clean command surface.">
   <title>CHIROMBE Matrix Command Core</title>
+  <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./css/matrix-shell.css">
   <link rel="stylesheet" href="./css/bloodline.css">
 </head>
@@ -38,6 +39,7 @@
         <button class="nav-btn" data-panel="bloodline">BLOODLINE</button>
         <button class="nav-btn" data-panel="engines">ENGINES</button>
         <button class="nav-btn" data-panel="audio">AUDIO</button>
+        <button class="nav-btn" data-panel="watch">WATCH</button>
         <button class="nav-btn" data-panel="audit">AUDIT</button>
         <button class="nav-btn" data-panel="health">HEALTH</button>
         <div class="nav-spacer"></div>
@@ -57,6 +59,7 @@
               <button class="primary" id="fullCycle">RUN FULL CYCLE</button>
               <button id="protect">ACTIVATE PROTECTION</button>
               <button id="selfTest">SELF TEST</button>
+              <button class="primary" id="watchAllNight">LEAVE SCREEN ON ALL NIGHT</button>
             </div>
           </div>
           <div class="metrics">
@@ -205,6 +208,23 @@
             </article>
           </div>
         </section>
+        <section class="panel" id="panel-watch">
+          <div class="section-title"><div><div class="eyebrow">WATCH DEVICE 77-99-33</div><h2>Night Screen</h2></div>
+            <div class="bl-actions">
+              <button class="primary" id="enterWatch">ENTER WATCH DEVICE</button>
+              <button id="exitWatch">EXIT WATCH</button>
+            </div>
+          </div>
+          <article class="card">
+            <div class="card-head"><span>DEVICE STATE</span><b id="watchNow">WATCH READY</b></div>
+            <p id="watchLine">Engage Watch Device to hold the night screen.</p>
+            <div class="telemetry">
+              <div><span>NOW PLAYING</span><b id="watchNowPlaying">-</b></div>
+            </div>
+            <div id="watchFeed"></div>
+            <p class="honest">Watch Device mixes prayers with system updates: version, completed phases, latest audit events and the last House walk. Keep one machine awake. This is not a cloud radio station.</p>
+          </article>
+        </section>
         <section class="panel" id="panel-audit">
           <div class="section-title"><div><div class="eyebrow">INTEGRITY</div><h2>Audit Chain</h2></div>
             <div class="bl-actions">
@@ -233,7 +253,18 @@
         </section>
       </main>
     </div>
-    <footer>MWARI NDI MWARI CHIROMBE MATRIX 3.0 77-99-33 <span id="version">3.0.7</span></footer>
+    <footer>MWARI NDI MWARI CHIROMBE MATRIX 3.0 77-99-33 <span id="version">3.0.8</span></footer>
+  </div>
+  <div id="watchLayer" class="hidden">
+    <div class="watch-card">
+      <div class="eyebrow">CHIROMBE WATCH DEVICE</div>
+      <h2>MWARI NDI MWARI</h2>
+      <p>Prayers and system updates are speaking. Leave this screen on.</p>
+      <div class="eyebrow" id="watchLayerStatus">LIVE</div>
+      <div class="bl-actions" style="justify-content:center">
+        <button id="exitWatch" onclick="window.CHIROMBE_WATCH&&window.CHIROMBE_WATCH.exit()">EXIT WATCH</button>
+      </div>
+    </div>
   </div>
   <script src="./js/matrix-kernel.js"></script>
   <script src="./js/phase4-seal.js"></script>
@@ -243,6 +274,7 @@
   <script src="./js/phase5-walk.js"></script>
   <script src="./js/phase6-ledger.js"></script>
   <script src="./js/phase7-prayer.js"></script>
+  <script src="./js/phase8-watch.js"></script>
   <script>
     setTimeout(function () {
       var boot = document.getElementById("boot");
