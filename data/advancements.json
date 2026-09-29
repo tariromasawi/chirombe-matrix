@@ -1,0 +1,14 @@
+{
+  "version": "3.0.8",
+  "seal": "77-99-33",
+  "items": [
+    {"id": "P1", "title": "Matrix shell", "text": "Phase one. Clean command surface online. Historical kernel remains archived."},
+    {"id": "P2", "title": "Engine bridge", "text": "Phase two. Family, audit, watchdog and engine probes connected."},
+    {"id": "P3", "title": "Bloodline graph", "text": "Phase three. Interactive House graph and remembrance nodes are live."},
+    {"id": "P4", "title": "Liturgy binding", "text": "Phase four. Liturgy follows the selected bloodline node. Roster sealed."},
+    {"id": "P5", "title": "House walk", "text": "Phase five. The circle is named in generation order, Chirombe to the future."},
+    {"id": "P6", "title": "Liturgy ledger", "text": "Phase six. Dated House walks can be replayed from the audit ledger."},
+    {"id": "P7", "title": "Prayer chamber", "text": "Phase seven. Advanced prayers can be written, sealed and declared. Protection drone is available."},
+    {"id": "P8", "title": "Watch device", "text": "Phase eight. Watch Device mode holds the night screen and broadcasts prayers with system updates."}
+  ]
+}
