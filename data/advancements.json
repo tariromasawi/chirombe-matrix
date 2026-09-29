@@ -1,5 +1,5 @@
 {
-  "version": "3.0.8",
+  "version": "3.0.9",
   "seal": "77-99-33",
   "items": [
     {"id": "P1", "title": "Matrix shell", "text": "Phase one. Clean command surface online. Historical kernel remains archived."},
@@ -9,6 +9,7 @@
     {"id": "P5", "title": "House walk", "text": "Phase five. The circle is named in generation order, Chirombe to the future."},
     {"id": "P6", "title": "Liturgy ledger", "text": "Phase six. Dated House walks can be replayed from the audit ledger."},
     {"id": "P7", "title": "Prayer chamber", "text": "Phase seven. Advanced prayers can be written, sealed and declared. Protection drone is available."},
-    {"id": "P8", "title": "Watch device", "text": "Phase eight. Watch Device mode holds the night screen and broadcasts prayers with system updates."}
+    {"id": "P8", "title": "Watch device", "text": "Phase eight. Watch Device mode holds the night screen and broadcasts prayers with system updates."},
+    {"id": "P9", "title": "Living liturgy", "text": "Phase nine. A fresh prayer is written from the latest walk, audit and roster, then sealed into the watch queue."}
   ]
 }
